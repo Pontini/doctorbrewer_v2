@@ -40,7 +40,7 @@ object Lib {
         }
 
         object Compose {
-            private  const val version = "1.0.1"
+            const val version = "1.0.1"
 
             const val composeUi = "androidx.compose.ui:ui:$version"
             const val materialCompose = "androidx.compose.material:material:$version"

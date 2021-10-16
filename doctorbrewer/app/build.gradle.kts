@@ -14,6 +14,11 @@ android {
     buildToolsVersion = Config.App.buildToolsVersion
 
     buildFeatures {
+        compose = true
+    }
+
+    composeOptions{
+        kotlinCompilerExtensionVersion = Lib.AndroidX.Compose.version
     }
 
     defaultConfig {
@@ -22,7 +27,6 @@ android {
         targetSdk = Config.App.targetSdkVersion
         versionCode = Config.App.versionCode
         versionName = Config.App.versionName
-
         testInstrumentationRunner = Config.App.testInstrumentationRunner
     }
 
