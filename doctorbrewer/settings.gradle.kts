@@ -1,3 +1,4 @@
+include(":app:features")
 
 include(
     ":app",
