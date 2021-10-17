@@ -12,7 +12,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/features" />
+            <option value="$PROJECT_DIR$/app/features/mash" />
+            <option value="$PROJECT_DIR$/app/features/mash/impl" />
+            <option value="$PROJECT_DIR$/app/features/mash/publ" />
             <option value="$PROJECT_DIR$/app/features/profile" />
+            <option value="$PROJECT_DIR$/app/features/profile/impl" />
+            <option value="$PROJECT_DIR$/app/features/profile/publ" />
             <option value="$PROJECT_DIR$/buildSrc" />
           </set>
         </option>

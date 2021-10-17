@@ -1,8 +1,10 @@
-include(":app:features")
-
 include(
     ":app",
-    ":app:features:profile"
+    ":app:features",
+    ":app:features:profile:impl",
+    ":app:features:profile:publ",
+    ":app:features:mash:impl",
+    ":app:features:mash:publ",
 )
 
-rootProject.name = "Doctor Brewer"
+rootProject.name = "DoctorBrewer"

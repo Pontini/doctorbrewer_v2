@@ -1,10 +1,11 @@
-
 plugins {
     id("com.android.application")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("android.extensions")
     id("kotlin-android")
     id("kotlin-kapt")
+
 }
 apply(from = "$rootDir/ktlint.gradle")
 
@@ -17,7 +18,7 @@ android {
         compose = true
     }
 
-    composeOptions{
+    composeOptions {
         kotlinCompilerExtensionVersion = Lib.AndroidX.Compose.version
     }
 
@@ -37,7 +38,7 @@ android {
 
         getByName("release") {
             isMinifyEnabled = true
-            proguardFiles (
+            proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
@@ -73,7 +74,6 @@ dependencies {
     implementation(project(mapOf("path" to ":tv:publ")))
     implementation(project(mapOf("path" to ":network")))*/
 
-
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
 
     implementation(Lib.AndroidX.Compose.composeUi)
@@ -87,13 +87,8 @@ dependencies {
     implementation(Lib.Material.material)
     implementation(Lib.AndroidX.Lifecycle.runtime)
 
-
-
-
-
     implementation(Lib.Kotlin.stdlib)
 
-
-
-
+    implementation(Lib.HiltDagger.hilt)
+    annotationProcessor(Lib.HiltDagger.compiler)
 }
