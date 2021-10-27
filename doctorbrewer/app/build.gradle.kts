@@ -5,7 +5,6 @@ plugins {
     kotlin("android.extensions")
     id("kotlin-android")
     id("kotlin-kapt")
-
 }
 apply(from = "$rootDir/ktlint.gradle")
 
@@ -21,6 +20,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Lib.AndroidX.Compose.version
     }
+
 
     defaultConfig {
         applicationId = Config.App.applicationId
@@ -66,15 +66,15 @@ android {
         resources.excludes.add("META-INF/*.kotlin_module")
     }
 }
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
-/*
-    implementation(project(mapOf("path" to ":tv:impl")))
-    implementation(project(mapOf("path" to ":movie:impl")))
-    implementation(project(mapOf("path" to ":tv:publ")))
-    implementation(project(mapOf("path" to ":network")))*/
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation(project(mapOf("path" to ":app:features:profile:impl")))
+    implementation(project(mapOf("path" to ":core")))
 
     implementation(Lib.AndroidX.Compose.composeUi)
     implementation(Lib.AndroidX.Compose.materialCompose)
@@ -90,5 +90,6 @@ dependencies {
     implementation(Lib.Kotlin.stdlib)
 
     implementation(Lib.HiltDagger.hilt)
-    annotationProcessor(Lib.HiltDagger.compiler)
+    kapt(Lib.HiltDagger.compiler)
+
 }

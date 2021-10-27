@@ -1,5 +1,9 @@
 plugins {
     id("com.android.library")
+    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("android.extensions")
+    id("dagger.hilt.android.plugin")
     id("kotlin-android")
 }
 apply(from = "$rootDir/ktlint.gradle")
@@ -15,15 +19,38 @@ android {
         kotlinCompilerExtensionVersion = Lib.AndroidX.Compose.version
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         minSdk = 29
         targetSdk = 31
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
 
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":app:features:profile:publ")))
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
 
@@ -40,14 +67,11 @@ dependencies {
 
     implementation(Lib.Kotlin.stdlib)
 
-    implementation(Lib.HiltDagger.hilt)
-    annotationProcessor(Lib.HiltDagger.compiler)
+    api(Lib.HiltDagger.hilt)
+    kapt(Lib.HiltDagger.compiler)
 
-    implementation(Lib.Retrofit.retrofit2)
+    implementation (Lib.Room.runtime)
+    kapt (Lib.Room.compiler)
 
     implementation(Lib.Gson.converterGson)
-
-    implementation(Lib.Room.runtime)
-    annotationProcessor(Lib.Room.compiler)
-
 }

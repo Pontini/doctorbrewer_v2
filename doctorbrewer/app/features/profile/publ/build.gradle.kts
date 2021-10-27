@@ -11,6 +11,5 @@ java {
 
 dependencies {
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:${Lib.Kotlin.version}")
-
-
+    implementation(project(mapOf("path" to ":core")))
 }

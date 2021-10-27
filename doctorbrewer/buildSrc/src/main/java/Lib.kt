@@ -1,6 +1,6 @@
 object Lib {
     object Kotlin {
-        const val version = "1.5.21"
+        const val version = "1.5.0"
 
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
@@ -59,7 +59,7 @@ object Lib {
         private const val roomVersion = "2.3.0"
 
         const val runtime = "androidx.room:room-runtime:$roomVersion"
-        const val compiler = "androidx.room:room-runtime:$roomVersion"
+        const val compiler = "androidx.room:room-compiler:$roomVersion"
     }
 
     object Material {
@@ -113,7 +113,7 @@ object Lib {
 
         const val hilt = "com.google.dagger:hilt-android:$version"
         const val compiler = "com.google.dagger:hilt-compiler:$version"
-
+        const val core = "com.google.dagger:hilt-core:$version"
     }
 }
 

@@ -1,24 +1,18 @@
-package pontinisystems.movie.infra.database
+package pontinisystems.doctorbrewer.features.profile.impl.infra.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import pontinisystems.movie.infra.database.DataBaseBuilder.Companion.DB_VERSION
-import pontinisystems.movie.infra.database.dao.MovieDao
-import pontinisystems.movie.infra.database.entities.MovieEntity
+import pontinisystems.doctorbrewer.features.profile.impl.infra.database.DataBaseBuilder.Companion.DB_VERSION
+import pontinisystems.doctorbrewer.features.profile.impl.infra.database.dao.ProfileDao
+import pontinisystems.doctorbrewer.features.profile.impl.infra.database.entities.ProfileEntity
 
 
-@Database(
-    entities = [MovieEntity::class], version = DB_VERSION
-)
+@Database(entities = [ProfileEntity::class], version = DB_VERSION)
+abstract class DataBaseBuilder : RoomDatabase() {
+    abstract fun profileDao(): ProfileDao
 
-
-
-abstract class DataBaseBuilder :RoomDatabase(){
-    companion object{
-        const val DB_VERSION=1
+    companion object {
+        const val DB_VERSION = 10
+        const val DB_NAME = "profile"
     }
-
-
-
-    abstract fun stockFavoriteEntityDaO(): MovieDao
 }
