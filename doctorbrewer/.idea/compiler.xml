@@ -42,6 +42,7 @@
       <module name="Doctor_Brewer.app.features.profile.impl" target="11" />
       <module name="Doctor_Brewer.buildSrc" target="11" />
       <module name="DoctorBrewer.app" target="11" />
+      <module name="DoctorBrewer.app.design_system" target="11" />
       <module name="DoctorBrewer.app.features.equipament.impl" target="11" />
       <module name="DoctorBrewer.app.features.navigation.impl" target="11" />
       <module name="DoctorBrewer.app.features.navigation.publ" target="11" />

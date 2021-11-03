@@ -51,7 +51,6 @@ dependencies {
 
     implementation(project(mapOf("path" to ":core")))
     implementation(project(mapOf("path" to ":app:features:profile:publ")))
-    implementation(project(mapOf("path" to ":app:design_system")))
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
 

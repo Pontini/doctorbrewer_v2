@@ -1,35 +1,37 @@
 package pontinisystems.doctorbrewer.features.profile.impl.presentation.viewstate
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import pontinisystems.doctorbrewer.features.profile.publ.domain.entities.Profile
 
 
 class CreateProfileViewState {
     val state = MutableLiveData<State>()
 
-    val action = MutableLiveData<Action>()
+    private val _action = MutableStateFlow<Action>(Action.Init)
+    val action = _action.asStateFlow()
 
+    fun setNewAction(newAction: Action) {
+        _action.value = newAction
+    }
 
-    val movies = MutableLiveData<List<String>>()
+    private val _isEnableButton = MutableStateFlow<Boolean>(false)
+    val iSEnableButton = _isEnableButton.asStateFlow()
+    fun setButtonIsEnable(newValue: Boolean) {
+        _isEnableButton.value = newValue
+    }
+
+    var profile = MutableStateFlow<Profile>(Profile(name = "", lastName = ""))
 
     sealed class Action {
+        object Init : Action()
+        data class ShowMessage(val message: String) : Action()
     }
 
-    val isLoading: LiveData<Boolean> = Transformations.map(state) {
-        it is State.Loading
-    }
-
-    val isError: LiveData<Boolean> = Transformations.map(state) {
-        it is State.Error
-    }
-
-    val isSuccess: LiveData<Boolean> = Transformations.map(state) {
-        it is State.Success
-    }
 
     sealed class State {
-        data class Success(val movies: List<String>) : State()
+        data class Success(val profile: Profile) : State()
         object Loading : State()
         data class Error(val message: String) : State()
     }

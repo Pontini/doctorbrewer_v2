@@ -1,4 +1,4 @@
-package pontinisystems.doctorbrewer.features.profile.impl.presentation.screens.ui.theme
+package pontinisystems.doctorbrewer.design_system.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

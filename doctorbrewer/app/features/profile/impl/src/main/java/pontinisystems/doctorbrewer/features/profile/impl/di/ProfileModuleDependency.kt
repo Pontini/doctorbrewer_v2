@@ -10,9 +10,11 @@ import dagger.hilt.components.SingletonComponent
 import pontinisystems.core.DefaultDispatcherProvider
 import pontinisystems.core.DispatcherProvider
 import pontinisystems.doctorbrewer.features.profile.impl.domain.repositories.ProfileRepository
+import pontinisystems.doctorbrewer.features.profile.impl.domain.usecases.ValidateFormCreateProfileImpl
 import pontinisystems.doctorbrewer.features.profile.impl.infra.database.DataBaseBuilder
 import pontinisystems.doctorbrewer.features.profile.impl.infra.database.dao.ProfileDao
 import pontinisystems.doctorbrewer.features.profile.impl.infra.repositories.ProfileRepositoryImpl
+import pontinisystems.doctorbrewer.features.profile.publ.domain.usecases.ValidateFormCreateProfile
 import javax.inject.Singleton
 
 @Module
@@ -43,5 +45,11 @@ class ProfileModuleDependency {
     @Provides
     @Singleton
     fun provideDispatcher(): DispatcherProvider = DefaultDispatcherProvider()
+
+
+    @Provides
+    @Singleton
+    fun provideValidateFormCreateProfile(): ValidateFormCreateProfile =
+        ValidateFormCreateProfileImpl()
 
 }
