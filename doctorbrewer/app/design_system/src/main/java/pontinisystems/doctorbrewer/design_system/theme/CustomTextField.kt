@@ -2,15 +2,19 @@ package pontinisystems.doctorbrewer.design_system.theme
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import pontinisystems.doctorbrewer.design_system.R
 
 @Composable
 fun CustomTextField(
@@ -23,35 +27,37 @@ fun CustomTextField(
     Column(modifier = Modifier.padding(16.dp)) {
         var textState by remember { mutableStateOf("") }
 
-        TextField(
+        OutlinedTextField(
+            isError = true,
             modifier = Modifier.fillMaxWidth(),
-            value = textState,
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = backgroundColor,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                cursorColor = colorBlueZodiac,
-            ),
-            placeholder = { Text(text = label, style = TextStyle(color = labelColor)) },
-            onValueChange = {
-                if (it.length <= maxLength) {
-                    textState = it
-                    callback.onChangeText(textState)
-
-                }
+            label = {
+                Text(
+                    text = "Phone",
+                    style = TextStyle(
+                        color = colorBlueZodiac,
+                    )
+                )
             },
-            shape = RoundedCornerShape(8.dp),
-            singleLine = true,
-            trailingIcon = {
-                if (textState.isNotEmpty()) {
-                    IconButton(onClick = { textState = "" }) {
-                        Icon(
-                            imageVector = Icons.Outlined.Close,
-                            contentDescription = null
-                        )
-                    }
-                }
-            }
+
+            placeholder = {
+                Text(
+                    text = label,
+                    style = TextStyle(
+                        color = colorTomato,
+                        textAlign = TextAlign.Center
+                    )
+                )
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                backgroundColor=backgroundColor,
+                focusedBorderColor = colorBlueZodiac,
+                unfocusedBorderColor = colorBlueZodiac,
+                focusedLabelColor = MaterialTheme.colors.secondary,
+                cursorColor = labelColor
+            ),
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            value = textState,
+            onValueChange = { textState = it },
         )
         Text(
             text = "${textState.length} / $maxLength",

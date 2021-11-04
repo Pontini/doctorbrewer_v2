@@ -1,9 +1,9 @@
 package pontinisystems.doctorbrewer.features.profile.impl.presentation.screens.ui
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -64,13 +64,16 @@ fun CreateProfileScreen(viewModel: CreateProfileViewModel) {
         },
 
         content = {
-            CustomTextField(label = "Nome", callback = object : Callback {
-                override fun onChangeText(newText: String) {
-                    val copy = viewModel.viewState.profile.asStateFlow().value.copy(name = newText)
-                    viewModel.dispatchViewAction(CreateProfileViewAction.OnChange(copy))
-                }
+            Column() {
+                CustomTextField(label = "Nome", callback = object : Callback {
+                    override fun onChangeText(newText: String) {
+                        val copy = viewModel.viewState.profile.asStateFlow().value.copy(name = newText)
+                        viewModel.dispatchViewAction(CreateProfileViewAction.OnChange(copy))
+                    }
 
-            })
+                })
+            }
+
         },
     )
 }
